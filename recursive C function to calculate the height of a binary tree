@@ -1,0 +1,11 @@
+int countHeight(struct node* t)  
+{  
+    int l,r;  
+    if(!t)  
+        return 0;  
+    if((!(t->left)) && (!(t->right)))  
+        return 0;  
+    l=countHeight(t->left);  
+    r=countHeight(t->right);  
+    return (1+((l>r)?l:r));  
+}     
