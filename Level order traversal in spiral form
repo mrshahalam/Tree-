@@ -1,0 +1,79 @@
+package test;
+class Node 
+{ 
+	int data; 
+	Node left;
+	Node right; 
+	public Node(int item) 
+	{ 
+		data = item; 
+		left = right = null; 
+	} 
+} 
+class demo 
+{ 
+	Node root;
+	public demo()
+	{
+		root=null;
+	}
+	 void printievelorder()
+	 {
+		 int h = height( root);
+		 
+		 boolean b= false;
+		 for(int i=1 ; i<=h ;i++)
+			 BFS( root , i , b);
+		 	
+		 b=!b;
+	 }
+	
+	int height(Node root)
+	 {
+		 if(root==null)
+		  return 0;
+		 else
+		 {
+			 int ltree = height(root.left);
+			 int rtree = height(root.right);
+			 if(ltree>rtree)
+				 return (ltree+1);
+			 else
+				 return (rtree+1);
+		 }
+	 }
+		 void BFS(Node root , int level ,boolean b)
+		 {
+			 if(root==null)
+				 return;
+			  if(level==1)
+				 System.out.print(" "+root.data);
+			  else if(level>1)
+				  if(b!=false ){
+					  	BFS(root.left , level-1 ,b);
+					  	BFS(root.right , level-1, b); 
+				  }
+			     else { 
+				 	     BFS(root.right, level - 1, b); 
+				 	     BFS(root.left, level - 1, b); 
+		              } 
+	 }
+	
+	/* Driver program to test above functions */
+	public static void main(String args[]) 
+	{ 
+		demo tree = new demo(); 
+		
+	tree.root= new Node(1); 
+	tree.root.left= new Node(2); 
+	tree.root.right= new Node(3); 
+	tree.root.left.left= new Node(7); 
+	tree.root.left.right= new Node(6);
+	 tree.root.right.left = new Node(5); 
+     tree.root.right.right = new Node(4);
+	
+		
+	System.out.println("Level order traversal of binary tree is "); 
+	tree.printievelorder(); 
+	} 
+} 
