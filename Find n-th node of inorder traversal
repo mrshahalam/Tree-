@@ -1,0 +1,48 @@
+package test;
+class Node 
+{ 
+	int data ;
+	Node left;
+	Node right;
+	
+	public Node(int d)
+	{
+		data=d;
+		left = right = null;
+		
+	}
+} 
+class demo 
+{ 
+	 static Node root;
+	 static int flag=0;
+	 
+	 static public void  printnode(Node node , int k)
+	 {
+		 if(node==null)
+			 return;
+		 if(flag<=k)
+		 {
+			 printnode(node.left , k);
+			 flag++;
+			 
+			 if(flag==k)
+			   System.out.print(""+node.data);
+			 
+			 printnode(node.right , k);
+		 }	 
+	 }
+	public static void main(String[] args) 
+	{ 
+		demo tree = new  demo();
+		tree.root = new Node(1);
+		root.left = new Node(2);
+		root.right = new Node(3);
+		root.left.left = new Node(4);
+		root.left.right = new Node(5);
+		root.right.left = new Node(6);
+		root.right.right = new Node(7);
+		
+		printnode(root , 1);
+	} 
+} 
