@@ -1,0 +1,71 @@
+package test;
+class Node 
+{
+	int data ;
+	Node left;
+	Node right;
+	 
+	public Node(int d)
+	{
+		data=d;
+		left = right=null;
+	}
+}
+class demo 
+{ 
+	static Node root;
+	demo()
+	{
+		root=null;
+	}
+	
+	public void printlevelorder()
+	{
+		int h= height(root);
+		for(int i=h ; i>=0 ;i--)
+		{
+			printlevelorder( root , i);
+		}
+		
+	}
+	int height(Node  root)
+	{
+		if(root==null)
+			return 0;
+		else
+		{
+			int ltree = height(root.left);
+			int rtree = height(root.right);
+			if(ltree>rtree) return (ltree+1);
+			else return (rtree+1);
+		}
+	}
+	 public void printlevelorder(Node root , int level)
+	 {
+		 if(root==null)
+			 return;
+		 if(level==1)
+			 System.out.print(" "+root.data);
+		 if(level>1)
+			 printlevelorder(root.left , level-1);
+		     printlevelorder(root.right , level-1);
+	 }
+	
+	public static void main(String args[]) 
+	{ 
+		demo tree = new demo(); 
+		tree.root = new Node(1);
+		tree.root.left = new Node(2);
+		tree.root.right = new Node(3);
+		tree.root.left.left = new Node(4);
+		tree.root.left.right = new Node(5);
+		tree.root.right.left = new Node(6);
+		tree.root.right.right  = new Node(7);
+		
+		System.out.print("The Level order Traversing of the tree is : \n ");
+		tree.printlevelorder();
+		
+		
+	
+	} 
+} 
