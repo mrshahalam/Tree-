@@ -1,0 +1,60 @@
+package com.codewithshah;
+
+import java.util.Arrays;
+import java.util.Stack;
+//-----------------------------------Check if two trees are identical or not-----------------------------
+class Node
+{
+     int data;
+     Node left;
+     Node right;
+     Node(int d)
+     {
+         data=d;
+         left=right=null;
+     }
+}
+class Main
+{
+    static Node root=null;
+    static Node root2 =null;
+
+    boolean check(Node root ,Node root2 )
+    {
+        if (root==null &&  root2==null)
+            return true;
+        if (root!=null && root2!=null)
+            if (root.data==root2.data  && check(root.left,root2.left) && check(root.right,root2.right))
+                return true;
+        return false;
+    }
+        public static void main (String[] args){
+              Main tree = new Main();
+              tree.root = new Node(12);
+              tree.root.left = new Node(10);
+              tree.root.right = new Node(30);
+              tree.root.left.left = new Node(4);
+              tree.root.left.right = new Node(5);
+              tree.root.right.left = new Node(25);
+              tree.root.right.right = new Node(40);
+              tree.root.right.right.right = new Node(34);
+              tree.root.right.right.right.right = new Node(45);
+              //-----------Second Tree------------------------------------
+              Main tree2 = new Main();
+              tree2.root2 = new Node(12);
+              tree2.root2.left = new Node(10);
+              tree2.root2.right = new Node(30);
+              tree2.root2.left.left = new Node(4);
+              tree2.root2.left.right = new Node(5);
+              tree2.root2.right.left = new Node(25);
+              tree2.root2.right.right = new Node(40);
+              tree2.root2.right.right.right = new Node(34);
+              tree2.root2.right.right.right.right = new Node(45);
+
+              if (tree.check(root,root2))
+                  System.out.print("Trees are identical ");
+              else
+                  System.out.print("Trees are not identical");
+    }
+}
+//-----------------------by SHAH ALAM...
