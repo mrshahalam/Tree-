@@ -1,0 +1,48 @@
+package com.codewithshah;
+//-----------------------------------Check if two trees are identical or not-----------------------------
+class Node
+{
+    int data;
+    Node left;
+    Node right;
+    Node(int d)
+    {
+        data=d;
+        left=right=null;
+    }
+}
+public class Main {
+
+     Node root;
+     Main()
+     {
+         root=null;
+     }
+      public Node  search(Node root ,int key)
+      {
+          if (root==null)
+              return null;
+
+          if(root.data==key)
+          {
+              System.out.print(root.data+"  is present in the tree");
+          }
+          search(root.left,key);
+          search(root.right,key);
+          return root;
+      }
+    public static void main(String[] args) {
+	// write your code here
+        Main tree = new Main();
+        tree.root = new Node(1);
+        tree.root.left = new Node(2);
+        tree.root.right = new Node(9);
+        tree.root.left.left = new Node(3);
+        tree.root.left.right = new Node(4);
+        tree.root.right.left = new Node(87);
+        tree.root.right.right = new Node(300);
+
+          tree.search(tree.root , 2);
+
+    }
+}
