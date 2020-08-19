@@ -1,0 +1,49 @@
+package com.codewithshah;
+//-----------------------------------Lowest Common Ancestor in a Binary Search Tree -----------------------------
+import java.util.Arrays;
+class Node
+{
+    int data;
+    Node left = null, right = null;
+
+    Node(int data) {
+        this.data = data;
+    }
+}
+class Main
+{
+    static  Node root;
+    Main()
+    {
+        root=null;
+    }
+
+       Node lca(Node root , int a , int b)
+      {
+          if (root==null)
+              return null;
+          if (root.data>a && root.data>b)
+          {
+              return lca(root.left,a ,b);
+          }
+          if (root.data<a && root.data<b)
+          {
+              return lca(root.right ,a ,b);
+          }
+          return root;
+      }
+    public static void main(String[] args)
+    {
+        Main tree  = new Main();
+        tree.root = new Node(20);
+        tree.root.left = new Node(8);
+        tree.root.right = new Node(22);
+        tree.root.left.left = new Node(4);
+        tree.root.left.right = new Node(12);
+        tree.root.left.right.left = new Node(10);
+        tree.root.left.right.right = new Node(14);
+  
+        System.out.print("The LCA of  (10,14) is "+tree.lca(root,10,14).data);
+    }
+}
+//-----------------------------BY SHAH ALAM
