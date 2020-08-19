@@ -1,0 +1,47 @@
+package com.codewithshah;
+//-----------------------------------Floor and Ceil from a BST    -----------------------------
+import java.util.Arrays;
+class Node
+{
+    int data;
+    Node left = null, right = null;
+
+    Node(int data) {
+        this.data = data;
+    }
+}
+class Main
+{
+    static  Node root;
+    Main()
+    {
+        root=null;
+    }
+
+    int ceil(Node root , int  x)
+    {
+        if (root==null)
+            return -1;
+        if (root.data==x)
+            return root.data;
+        if (root.data<x)
+            return ceil(root.right,x);
+        int ceil = ceil(root.left , x);
+
+        return (ceil>=x)?ceil: root.data;
+    }
+    public static void main(String[] args)
+    {
+        Main tree  = new Main();
+        tree.root = new Node(20);
+        tree.root.left = new Node(8);
+        tree.root.right = new Node(22);
+        tree.root.left.left = new Node(4);
+        tree.root.left.right = new Node(12);
+        tree.root.left.right.left = new Node(10);
+        tree.root.left.right.right = new Node(14);
+          int x=1;
+        System.out.print("The Ceil of  "+x+" is "+tree.ceil(root,x));
+    }
+}
+//-----------------------------BY SHAH ALAM
